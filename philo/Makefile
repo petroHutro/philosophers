@@ -1,5 +1,5 @@
 NAME			=	philo
-
+   
 SRC	=				main.c \
 					src/init.c \
 					src/life.c \
