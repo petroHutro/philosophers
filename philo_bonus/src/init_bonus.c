@@ -6,17 +6,17 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 12:48:49 by coleta            #+#    #+#             */
-/*   Updated: 2022/05/31 16:43:03 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:31:55 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../includes/philo_bonus.h"
 
 static int	init_malloc(t_date *date)
 {
 	date->philo = malloc(sizeof(t_philo) * date->number_of_philosophers);
 	if (!date->philo)
-		return (1);
+		return (error(MAE));
 	return (0);
 }
 
@@ -26,10 +26,12 @@ static int	init_sem(t_date *date)
 	sem_unlink("Message");
 	sem_unlink("Take");
 	date->take_fork = sem_open("Take", O_CREAT | O_EXCL, 644, 1);
-	date->fork = sem_open("Fork", O_CREAT | O_EXCL, 644, date->number_of_philosophers);
+	date->fork = sem_open("Fork", O_CREAT | O_EXCL, 644, \
+	date->number_of_philosophers);
 	date->message = sem_open("Message", O_CREAT | O_EXCL, 644, 1);
-	if (date->fork == SEM_FAILED || date->message == SEM_FAILED || date->take_fork  == SEM_FAILED)
-		return (1);
+	if (date->fork == SEM_FAILED || date->message == SEM_FAILED || \
+	date->take_fork == SEM_FAILED)
+		return (error(SE));
 	return (0);
 }
 

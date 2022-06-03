@@ -6,11 +6,11 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 19:38:58 by coleta            #+#    #+#             */
-/*   Updated: 2022/05/31 20:12:11 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:49:08 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../includes/philo_bonus.h"
 
 void	eating(t_philo *philo)
 {

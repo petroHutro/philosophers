@@ -15,7 +15,7 @@ HEADERS		=		includes/philo.h \
 
 CC				=	gcc
 
-CFLAGS			=	-O2 -Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 
 all: $(NAME)
 

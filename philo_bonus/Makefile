@@ -1,17 +1,18 @@
 NAME			=	philo_bonus
 
 SRC	=				main_bonus.c \
-					init_bonus.c \
-					life_bonus.c \
-					spectator_bonus.c \
-					utils_bonus.c \
-					forking_bonus.c \
+					src/init_bonus.c \
+					src/life_bonus.c \
+					src/spectator_bonus.c \
+					src/utils_bonus.c \
+					src/utils_2_bonus.c \
+					src/forking_bonus.c \
 					
 
 OBJ			=		$(patsubst %.c,%.o,$(SRC))
 
-HEADERS		=		philo_bonus.h \
-					s_philo_bonus.h \
+HEADERS		=		includes/philo_bonus.h \
+					includes/s_philo_bonus.h \
 
 CC				=	gcc
 

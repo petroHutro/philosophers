@@ -6,20 +6,42 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 20:03:42 by coleta            #+#    #+#             */
-/*   Updated: 2022/05/31 20:54:08 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:35:45 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo_bonus.h"
+#include "../includes/philo_bonus.h"
+
+void	wait_fork(t_date *date)
+{
+	int	rez;
+	int	n;
+
+	n = 0;
+	while (1)
+	{
+		waitpid(-1, &rez, 0);
+		rez = rez >> 8;
+		if (rez == 4)
+			break ;
+		if (rez == 5)
+			n++;
+		if (n == date->number_of_philosophers)
+		{
+			printf("%s", PA);
+			break ;
+		}
+	}
+}
 
 int	for_fork(t_philo *philo)
 {
 	pthread_t	thread;
 
 	if (pthread_create(&thread, NULL, spectator, philo) != 0)
-		return (1);
+		return (error(PE));
 	if (pthread_detach(thread) != 0)
-		return (1);
+		return (error(PE));
 	while (philo->live)
 	{
 		eating(philo);
@@ -29,7 +51,7 @@ int	for_fork(t_philo *philo)
 	exit (4);
 }
 
-void	forking(t_date *date)
+int	forking(t_date *date)
 {
 	int		i;
 	pid_t	pid;
@@ -39,11 +61,15 @@ void	forking(t_date *date)
 	{
 		pid = fork();
 		if (pid == 0)
-			for_fork(&date->philo[i]);
+		{
+			if (for_fork(&date->philo[i]))
+				return (1);
+		}
 		else if (pid > 0)
 			date->philo[i].pid = pid;
 		else
-			; //ERROR
+			return (error(FE));
 		i ++;
 	}
+	return (1);
 }

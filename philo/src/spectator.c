@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:05:11 by coleta            #+#    #+#             */
-/*   Updated: 2022/05/31 17:30:47 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/03 16:43:26 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	spectator(t_date *date)
 	while (date->number_of_times_each_philosopher_must_eat)
 	{
 		i = 0;
-		while (i < date->number_of_philosophers && date->number_of_times_each_philosopher_must_eat)
+		while (i < date->number_of_philosophers && \
+		date->number_of_times_each_philosopher_must_eat)
 		{
 			pthread_mutex_lock(&date->message);
 			time = get_time() - date->philo[i].last_eat;
@@ -36,5 +37,6 @@ int	spectator(t_date *date)
 			pthread_mutex_unlock(&date->message);
 		}
 	}
+	printf("%s", PA);
 	return (1);
 }

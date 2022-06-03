@@ -6,12 +6,12 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 12:48:31 by coleta            #+#    #+#             */
-/*   Updated: 2022/05/30 20:21:29 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/03 18:09:13 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_PHILO_H
-# define S_PHILO_H
+#ifndef S_PHILO_BONUS_H
+# define S_PHILO_BONUS_H
 
 # include <stdlib.h>
 # include <pthread.h>

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_2_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 17:34:31 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 16:40:30 by coleta           ###   ########.fr       */
+/*   Created: 2022/06/03 16:52:59 by coleta            #+#    #+#             */
+/*   Updated: 2022/06/03 16:54:10 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../includes/philo_bonus.h"
 
 static void	norm_l(int *i, int *z, long *n)
 {
@@ -54,9 +54,9 @@ long	get_time(void)
 
 void	massage(t_philo *philo, char *str)
 {
-	pthread_mutex_lock(&philo->date->message);
+	sem_wait(philo->date->message);
 	printf("%ld %lu %s\n", get_time() - philo->date->start, philo->id + 1, str);
-	pthread_mutex_unlock(&philo->date->message);
+	sem_post(philo->date->message);
 }
 
 void	ft_sleep(int time_ms)
