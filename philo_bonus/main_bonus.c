@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 12:47:06 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 17:55:24 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/07 18:51:35 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int	main(int argc, char **argv)
 		wait_fork(&date);
 		clear(&date);
 	}
+	return (1);
 }

@@ -16,7 +16,7 @@ HEADERS		=		includes/philo_bonus.h \
 
 CC				=	gcc
 
-CFLAGS			= -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=thread
 
 all: $(NAME)
 

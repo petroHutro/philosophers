@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 20:03:42 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 18:35:45 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 18:36:20 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,16 @@ int	for_fork(t_philo *philo)
 		return (error(PE));
 	if (pthread_detach(thread) != 0)
 		return (error(PE));
-	while (philo->live)
+	while (1)
 	{
+		sem_wait(philo->date->wait);
+		if (!philo->live)
+			exit (4);
+		sem_post(philo->date->wait);
 		eating(philo);
 		sleeping(philo);
 		think(philo);
 	}
-	exit (4);
 }
 
 int	forking(t_date *date)

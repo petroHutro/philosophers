@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 12:48:31 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 18:09:13 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 18:31:18 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_date
 	sem_t			*fork;
 	sem_t			*message;
 	sem_t			*take_fork;
+	sem_t			*wait;
 
 }t_date;
 
