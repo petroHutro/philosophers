@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:01:33 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 20:57:19 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 21:43:38 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,13 @@ int	init(t_date *date)
 		% date->number_of_philosophers];
 		date->philo[i].id = i;
 		date->philo[i].live = 1;
-		date->philo[i].must_eat = date->number_of_times_each_philosopher_must_eat;
+		date->philo[i].must_eat = \
+		date->number_of_times_each_philosopher_must_eat;
 		date->start = get_time();
 		date->philo[i].last_eat = get_time();
 		i ++;
 	}
+	date->number_of_times_each_philosopher_must_eat = date->number_of_philosophers;
 	if (init_threads(date))
 		return (1);
 	return (0);

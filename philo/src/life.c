@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:07:21 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 20:58:47 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 21:44:41 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	eating(t_philo *philo)
 	philo->last_eat = get_time();
 	philo->must_eat--;
 	if (philo->must_eat == 0)
+	{
+		// printf("\n%ld\n", philo->date->number_of_times_each_philosopher_must_eat);
 		philo->date->number_of_times_each_philosopher_must_eat--;
+	}
 	pthread_mutex_unlock(&philo->date->wait);
 	ft_sleep(philo->date->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork);
@@ -46,7 +49,7 @@ void	*life(void *philo_info)
 	t_philo	*philo;
 
 	philo = (t_philo *)philo_info;
-	while (philo->must_eat)
+	while (1)
 	{
 		eating(philo);
 		sleeping(philo);

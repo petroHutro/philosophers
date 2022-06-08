@@ -6,11 +6,23 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:05:11 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 20:59:34 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 21:46:42 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+static int	check_number(t_date *date)
+{
+	if (date->number_of_times_each_philosopher_must_eat == 0)
+	{
+		// pthread_mutex_unlock(&date->message);
+		printf("%s", PA);
+		// pthread_mutex_lock(&date->message);
+		return (1);
+	}
+	return (0);
+}
 
 int	spectator(t_date *date)
 {
@@ -23,12 +35,8 @@ int	spectator(t_date *date)
 		while (i < date->number_of_philosophers)
 		{
 			pthread_mutex_lock(&date->wait);
-			if (date->number_of_times_each_philosopher_must_eat == 0)
-			{
-				printf("%s", PA);
-				pthread_mutex_lock(&date->message);
+			if (check_number(date))
 				return (1);
-			}
 			time = get_time() - date->philo[i].last_eat;
 			if (time >= date->time_to_die)
 			{

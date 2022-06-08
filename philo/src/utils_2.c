@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:26:49 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 20:56:32 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 21:20:19 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	parsing(int argc, char **argv, t_date *date)
 	date->number_of_times_each_philosopher_must_eat = -1;
 	if (argc == 6)
 		date->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
-		// date->number_of_times_each_philosopher_must_eat = \
-		// date->number_of_philosophers * ft_atoi(argv[5]);
 	return (0);
 }
 
