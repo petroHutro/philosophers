@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:26:49 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 16:43:49 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 20:56:32 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ int	parsing(int argc, char **argv, t_date *date)
 	date->time_to_sleep = ft_atoi(argv[4]);
 	date->number_of_times_each_philosopher_must_eat = -1;
 	if (argc == 6)
-		date->number_of_times_each_philosopher_must_eat = \
-		date->number_of_philosophers * ft_atoi(argv[5]);
+		date->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
+		// date->number_of_times_each_philosopher_must_eat = \
+		// date->number_of_philosophers * ft_atoi(argv[5]);
 	return (0);
 }
 
@@ -69,14 +70,16 @@ int	clear(t_date *date)
 {
 	int	i;
 
-	pthread_mutex_destroy(&date->message);
+	usleep(100);
 	i = 0;
 	while (i < date->number_of_philosophers)
 	{
-		date->philo[i].live = 0;
 		if (&date->fork[i])
-			pthread_mutex_destroy(&date->fork[i++]);
+			pthread_mutex_destroy(&date->fork[i]);
+		i++;
 	}
 	free_malloc(date);
+	pthread_mutex_destroy(&date->wait);
+	pthread_mutex_destroy(&date->message);
 	return (0);
 }

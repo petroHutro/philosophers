@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:01:51 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 16:40:22 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 17:46:34 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ int	main(int argc, char **argv)
 	if (spectator(&date))
 		return (clear(&date));
 }
-// исправиить АААААААА

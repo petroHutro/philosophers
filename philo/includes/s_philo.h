@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 17:40:37 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/03 16:49:13 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/08 20:57:15 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_philo
 	size_t			live;
 	size_t			id;
 	struct s_date	*date;
+	int				must_eat;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }t_philo;
@@ -40,7 +41,7 @@ typedef struct s_date
 	pthread_t		*threads;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	message;
-
+	pthread_mutex_t	wait;
 }t_date;
 
 #endif
