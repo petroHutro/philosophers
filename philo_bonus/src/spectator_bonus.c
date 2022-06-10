@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:22:24 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 18:36:01 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/10 15:51:26 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	*spectator(void *philo_v)
 		if (time > philo->date->time_to_die)
 		{
 			sem_wait(philo->date->take_fork);
+			sem_wait(philo->date->wait);
 			philo->live = 0;
-			massage(philo, "dead");
+			massage(philo, "died");
 			sem_wait(philo->date->message);
 			exit(4);
 		}

@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 12:50:19 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/07 18:51:58 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/10 15:46:58 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ static void	sem_free(t_date *date)
 	{
 		sem_close(date->take_fork);
 		sem_unlink("Take");
+	}
+	if (date->wait)
+	{
+		sem_close(date->wait);
+		sem_unlink("Wait");
 	}
 }
 

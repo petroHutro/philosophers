@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 14:07:21 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 21:44:41 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/10 15:53:42 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,15 @@
 void	eating(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
-	massage(philo, "take fork left");
+	massage(philo, "has taken a fork");
 	pthread_mutex_lock(philo->right_fork);
-	massage(philo, "take fork right");
-	massage(philo, "eat");
+	massage(philo, "has taken a fork");
+	massage(philo, "is eating");
 	pthread_mutex_lock(&philo->date->wait);
 	philo->last_eat = get_time();
 	philo->must_eat--;
 	if (philo->must_eat == 0)
-	{
-		// printf("\n%ld\n", philo->date->number_of_times_each_philosopher_must_eat);
 		philo->date->number_of_times_each_philosopher_must_eat--;
-	}
 	pthread_mutex_unlock(&philo->date->wait);
 	ft_sleep(philo->date->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork);
@@ -35,13 +32,13 @@ void	eating(t_philo *philo)
 
 void	sleeping(t_philo *philo)
 {
-	massage(philo, "sleep");
+	massage(philo, "is sleeping");
 	ft_sleep(philo->date->time_to_sleep);
 }
 
 void	think(t_philo *philo)
 {
-	massage(philo, "think");
+	massage(philo, "is thinking");
 }
 
 void	*life(void *philo_info)

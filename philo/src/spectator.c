@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:05:11 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 21:46:42 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/10 15:53:39 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static int	check_number(t_date *date)
 {
 	if (date->number_of_times_each_philosopher_must_eat == 0)
 	{
-		// pthread_mutex_unlock(&date->message);
 		printf("%s", PA);
-		// pthread_mutex_lock(&date->message);
 		return (1);
 	}
 	return (0);
@@ -40,7 +38,7 @@ int	spectator(t_date *date)
 			time = get_time() - date->philo[i].last_eat;
 			if (time >= date->time_to_die)
 			{
-				massage(&date->philo[i], "dead");
+				massage(&date->philo[i], "died");
 				pthread_mutex_lock(&date->message);
 				return (1);
 			}

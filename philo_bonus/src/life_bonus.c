@@ -6,7 +6,7 @@
 /*   By: coleta <coleta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 19:38:58 by coleta            #+#    #+#             */
-/*   Updated: 2022/06/08 19:19:04 by coleta           ###   ########.fr       */
+/*   Updated: 2022/06/10 15:54:09 by coleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	eating(t_philo *philo)
 {
 	sem_wait(philo->date->take_fork);
 	sem_wait(philo->date->fork);
-	massage(philo, "take fork left");
+	massage(philo, "has taken a fork");
 	sem_wait(philo->date->fork);
-	massage(philo, "take fork right");
+	massage(philo, "has taken a fork");
 	sem_post(philo->date->take_fork);
-	massage(philo, "eat");
+	massage(philo, "is eating");
 	sem_wait(philo->date->wait);
 	philo->last_eat = get_time();
 	philo->date->number_of_times_each_philosopher_must_eat--;
@@ -34,11 +34,11 @@ void	eating(t_philo *philo)
 
 void	sleeping(t_philo *philo)
 {
-	massage(philo, "sleep");
+	massage(philo, "is sleeping");
 	ft_sleep(philo->date->time_to_sleep);
 }
 
 void	think(t_philo *philo)
 {
-	massage(philo, "think");
+	massage(philo, "is thinking");
 }

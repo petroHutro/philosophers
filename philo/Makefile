@@ -15,7 +15,7 @@ HEADERS		=		includes/philo.h \
 
 CC				=	gcc
 
-CFLAGS			=	-Wall -Wextra -Werror -fsanitize=thread -g3
+CFLAGS			=	-Wall -Wextra -Werror #-fsanitize=thread -g3
 
 all: $(NAME)
 
